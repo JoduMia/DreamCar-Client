@@ -1,13 +1,16 @@
-import React from 'react'
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData} from 'react-router-dom';
 import { TiTick } from 'react-icons/ti'
 import { ImLocation } from 'react-icons/im'
 import { BiTime } from 'react-icons/bi'
 import { GiDuration } from 'react-icons/gi'
+import Modal from '../Modal/Modal';
+import { useState } from 'react';
 
 const ProductsCategory = () => {
+    const [booking, setBooking] = useState('null')
     const products = useLoaderData();
-    console.log(products);
+
+
     return (
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
             {
@@ -30,10 +33,16 @@ const ProductsCategory = () => {
                                 <small className='flex items-center gap-1 font-bold'><ImLocation /> {location}</small>
                                 <small className='flex items-center gap-1 font-bold'><GiDuration /> {uses_duration}</small>
                             </div>
-                            <button className='btn btn-sm btn-success w-full'>Buy Now</button>
+                            <label htmlFor='booking-car' onClick={() => setBooking(product)} className='btn btn-sm btn-success w-full'>Book Now</label>
                         </div>
                     </div>
                 })
+            }
+
+            {
+                booking && (
+                    <Modal booking={booking} setBooking={setBooking}/>
+                )
             }
         </div>
     )
