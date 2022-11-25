@@ -1,23 +1,24 @@
 import React from 'react'
 import { useContext } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext/AuthProvider';
 import Loader from '../components/shared/Loader';
 import useAdminChecker from '../hooks/useAdmin';
 import useBuyerChecker from '../hooks/useBuyer';
+import toast from 'react-hot-toast';
 
 const BuyerRoutes = ({children}) => {
-    const{ user} = useContext(AuthContext);
+    const{ user, logOut} = useContext(AuthContext);
     const [isAdmin, adminLoading] = useAdminChecker(user?.email);
     const [isBuyer,buyerLoading] = useBuyerChecker(user?.email);
-    const location = useLocation();
     if(adminLoading || buyerLoading) {
         return <Loader />
     }
   if(user && (isBuyer || isAdmin)) {
       return children;
 }
-return <Navigate to='/login' state={{from: location}} replace />
+logOut().then(toast.error("You have tried an forbidden route"))
+return <Navigate to='/login' />
 }
 
 export default BuyerRoutes;
