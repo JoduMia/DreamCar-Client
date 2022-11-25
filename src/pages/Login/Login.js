@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import useToken from '../../hooks/useToken';
@@ -19,6 +20,7 @@ const Login = () => {
 
   if(token) {
     navigate(from, {replace: true});
+    toast.success("Log in successfull. !!!")
   }
 
 
