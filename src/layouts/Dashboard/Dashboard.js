@@ -1,8 +1,15 @@
 import React from 'react'
+import { useContext } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import Navbar from '../../components/shared/Header/Navbar'
+import { AuthContext } from '../../contexts/AuthContext/AuthProvider'
+import useAdminChecker from '../../hooks/useAdmin'
+import useSellerChecker from '../../hooks/useSeller'
 
 const Dashboard = () => {
+  const {user} = useContext(AuthContext);
+  const [isAdmin] = useAdminChecker(user?.email);
+  const [isSeller] = useSellerChecker(user?.email);
   return (
     <div>
       <Navbar />
@@ -14,12 +21,17 @@ const Dashboard = () => {
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-slate-100 shadow text-base-content">
-            <li><Link to='/dashboard/sellers'>All sellers</Link></li>
-            <li><Link to='/dashboard/buyers'>All Buyers</Link></li>
-            <li><Link to='/dashboard/mybuyers'>My Buyers</Link></li>
-            <li><Link to='/dashboard/myproduct'>My Products</Link></li>
-            <li><Link to='/dashboard/myorder'>My Order</Link></li>
-            <li><Link to='/dashboard/addproduct'>Add Product</Link></li>
+            {isAdmin && <li><Link to='/dashboard/sellers'>All sellers</Link></li>}
+            {isAdmin && <li><Link to='/dashboard/buyers'>All Buyers</Link></li>}
+
+            {(isSeller || isAdmin) && <li><Link to='/dashboard/mybuyers'>My Buyers</Link></li>}
+
+            {(isSeller || isAdmin) && <li><Link to='/dashboard/myproduct'>My Products</Link></li>}
+
+            {(isSeller || isAdmin) && <li><Link to='/dashboard/myorder'>My Order</Link></li>}
+
+            {(isSeller || isAdmin) && <li><Link to='/dashboard/addproduct'>Add Product</Link></li>}
+            
           </ul>
 
         </div>
