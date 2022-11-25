@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import {MdOutlineSpaceDashboard} from 'react-icons/md'
 import { AuthContext } from '../../../contexts/AuthContext/AuthProvider';
 
 
@@ -63,7 +64,7 @@ const Navbar = () => {
         user?.uid
           ?
           <div className="navbar-end">
-
+            <label htmlFor='my-drawer-2' className='text-3xl cursor-pointer text-[#046b72] lg:hidden mr-2'><MdOutlineSpaceDashboard /></label>
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
