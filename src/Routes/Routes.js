@@ -5,6 +5,7 @@ import Dashboard from "../layouts/Dashboard/Dashboard";
 import Main from "../layouts/Main/Main/Main";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter(createRoutesFromElements(
     <Route>
@@ -14,12 +15,11 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route path="/register" element={ <Register /> }/>
             <Route
                 path="/category/:id"
-                element= { <ProductsCategory />}
-                loader = {({params}) => fetch(`http://localhost:5000/category/${params.id}`)}
+                element= { <PrivateRoute><ProductsCategory /></PrivateRoute>}
             />
         </Route>
 
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
 
         </Route>
     </Route>

@@ -1,15 +1,21 @@
-import { useLoaderData} from 'react-router-dom';
+import {  useParams} from 'react-router-dom';
 import { TiTick } from 'react-icons/ti'
 import { ImLocation } from 'react-icons/im'
 import { BiTime } from 'react-icons/bi'
 import { GiDuration } from 'react-icons/gi'
 import Modal from '../Modal/Modal';
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 const ProductsCategory = () => {
     const [booking, setBooking] = useState('null')
-    const products = useLoaderData();
+    const {id} = useParams()
 
+    const {data: products= []} = useQuery({
+        queryKey:['products'],
+        queryFn: () => fetch(`http://localhost:5000/category/${id}`)
+        .then(res => res.json())
+    })
 
     return (
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>

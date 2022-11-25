@@ -52,7 +52,7 @@ const Modal = ({ booking, setBooking }) => {
                         <input type="text" placeholder="Product Name" defaultValue={product_name} name='pname' disabled required className="input input-bordered input-accent w-full bg-white disabled:bg-gray-300
                             disabled:text-black " />
 
-                        <input type="text" placeholder="price" defaultValue={`$${resale_price}`} name='price' disabled required className="input input-bordered input-accent w-full bg-white disabled:bg-gray-300
+                        <input type="text" placeholder="price" defaultValue={resale_price} name='price' disabled required className="input input-bordered input-accent w-full bg-white disabled:bg-gray-300
                             disabled:text-black " />
 
 
