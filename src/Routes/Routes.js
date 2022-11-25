@@ -14,6 +14,7 @@ import Main from "../layouts/Main/Main/Main";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import AdminRoute from "./AdminRoute";
+import BuyerRoutes from "./BuyerRoutes";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoutes";
 
@@ -33,7 +34,7 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route index element={<AllUsers /> }/>
             <Route path="/dashboard/sellers" element={<AdminRoute><Seller /></AdminRoute> }/>
             <Route path="/dashboard/buyers" element={<AdminRoute><AllBuyers /></AdminRoute> }/>
-            <Route path="/dashboard/myorder" element={<SellerRoute><MyOrders /></SellerRoute> }/>
+            <Route path="/dashboard/myorder" element={<BuyerRoutes><MyOrders /></BuyerRoutes> }/>
             <Route path="/dashboard/addproduct" element={<SellerRoute><AddProduct /></SellerRoute> }/>
             <Route path="/dashboard/myproduct" element={<MyProduct /> }/>
             <Route path="/dashboard/mybuyers" element={<SellerRoute><MyBuyers /></SellerRoute> }/>
