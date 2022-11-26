@@ -13,7 +13,6 @@ const MyOrders = () => {
     queryFn: () => fetch(`http://localhost:5000/mybookings?email=${user?.email}`)
       .then(res => res.json())
   })
-  console.log(orders);
 
   if (isLoading) return <Loader />
   if(isError) return (
@@ -40,15 +39,15 @@ const MyOrders = () => {
 
             {
               orders.map(order => {
-                const { _id,img, price, product_name, status } = order;
-                console.log(img);
+                console.log(order);
+                const { _id,image, price, product_name, status } = order;
                 return (
                   <tr key={_id}>
                     <td>
                       <div className="flex items-center space-x-3">
                         <div className="avatar">
                           <div className="mask mask-squircle w-12 h-12">
-                            <img src={img} alt="Avatar Tailwind CSS Component" />
+                            <img src={image} alt="Avatar Tailwind CSS Component" />
                           </div>
                         </div>
                       </div>

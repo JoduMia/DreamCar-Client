@@ -8,13 +8,13 @@ const stripePromise = loadStripe('pk_test_51M83t1IVPtt27fTQ9lg8TlV1U0lnOtxYKcO9X
 
 const Checkout = () => {
     const order = useLoaderData();
-    const { img, price, product_name } = order;
+    const { image, price, product_name } = order;
     return (
         <div className='lg:w-1/2 mx-auto mt-4'>
             <h1 className='text-2xl font-semibold text-green-500 px-3'>Payment</h1>
             <div className='shadow-lg p-3 bg-gray-50 rounded space-y-5'>
                 <div className='h-[300px]'>
-                    <img src={img} alt="Car images" className='h-[300px] w-full rounded border' />
+                    <img src={image} alt="Car images" className='h-[300px] w-full rounded border' />
                 </div>
                 <div className='pl-4 space-y-2'>
                     <h3 className='text-xl font-bold text-gray-700'>Model: {product_name}</h3>
