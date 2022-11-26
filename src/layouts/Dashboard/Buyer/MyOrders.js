@@ -40,9 +40,10 @@ const MyOrders = () => {
 
             {
               orders.map(order => {
-                const { img, price, product_name, status } = order;
+                const { _id,img, price, product_name, status } = order;
+                console.log(img);
                 return (
-                  <tr>
+                  <tr key={_id}>
                     <td>
                       <div className="flex items-center space-x-3">
                         <div className="avatar">
@@ -55,7 +56,7 @@ const MyOrders = () => {
                     <td>{product_name}</td>
                     <td className='font-bold'>${price}</td>
                     <th>
-                      <Link to={'/checkout'} className="btn btn-success btn-sm">{status === 'unpaid' ? 'Pay': 'Paid'}</Link>
+                      <Link to={`/dashboard/checkout/${_id}`} className="btn btn-success btn-sm" disabled={status=== 'paid' && true}>{status === 'unpaid' ? 'Pay': 'Paid'}</Link>
                     </th>
                   </tr>
                 )

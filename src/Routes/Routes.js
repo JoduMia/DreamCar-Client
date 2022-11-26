@@ -13,6 +13,7 @@ import Seller from "../layouts/Dashboard/Seller/Seller";
 import Main from "../layouts/Main/Main/Main";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Checkout from "../payment/Checkout";
 import AdminRoute from "./AdminRoute";
 import BuyerRoutes from "./BuyerRoutes";
 import PrivateRoute from "./PrivateRoute";
@@ -31,6 +32,16 @@ export const routes = createBrowserRouter(createRoutesFromElements(
         </Route>
 
         <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+            <Route
+            path="/dashboard/checkout/:id"
+            element={<BuyerRoutes><Checkout /></BuyerRoutes> }
+            loader={({params}) => fetch(`http://localhost:5000/dashboard/checkout/${params.id}`)}
+            />
+
+
+
+
+
             <Route index element={<AllUsers /> }/>
             <Route path="/dashboard/sellers" element={<AdminRoute><Seller /></AdminRoute> }/>
             <Route path="/dashboard/buyers" element={<AdminRoute><AllBuyers /></AdminRoute> }/>
@@ -38,6 +49,7 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route path="/dashboard/addproduct" element={<SellerRoute><AddProduct /></SellerRoute> }/>
             <Route path="/dashboard/myproduct" element={<MyProduct /> }/>
             <Route path="/dashboard/mybuyers" element={<SellerRoute><MyBuyers /></SellerRoute> }/>
+
             <Route path="/dashboard/reports" element={<AdminRoute><Report /></AdminRoute> }/>
         </Route>
     </Route>

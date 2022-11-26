@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 
 const Modal = ({ booking, setBooking }) => {
     const { user } = useContext(AuthContext);
-    const { product_name, resale_price } = booking;
+    const { img,product_name, resale_price,_id } = booking;
     console.log(booking);
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,7 +15,7 @@ const Modal = ({ booking, setBooking }) => {
         const phone = form.phone.value;
         const where = form.location.value;
 
-        const doc = {name, email, phone, product_name, price:resale_price, where, status:'buyer'}
+        const doc = {name, img, email, phone, product_name, price:resale_price, where, matchby: _id}
         fetch(`http://localhost:5000/bookings`, {
             method: 'POST',
             headers: {
