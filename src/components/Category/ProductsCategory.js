@@ -9,7 +9,8 @@ import { useQuery } from '@tanstack/react-query';
 
 const ProductsCategory = () => {
     const [booking, setBooking] = useState('null')
-    const {id} = useParams()
+    const {id} = useParams();
+
 
     const {data: products= []} = useQuery({
         queryKey:['products'],

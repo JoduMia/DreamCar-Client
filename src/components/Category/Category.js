@@ -22,7 +22,7 @@ const Category = () => {
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     categories.map(({ _id, category, image }) => (
-                        <Link key={_id} to={`/category/${_id}`}>
+                        <Link key={_id} to={`/category/${category}`}>
                             <div className='shadow-lg p-3 bg-gray-50 rounded'>
                                 <div className='h-[300px]'>
                                     <img src={image} alt="Car images" className='h-[300px] w-full rounded border' />
