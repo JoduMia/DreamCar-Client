@@ -23,7 +23,6 @@ const Login = () => {
     toast.success("Log in successfull. !!!")
   }
 
-
   const handleLogin = data => {
     const {email,password} = data;
     emailPassSignIn(email, password)

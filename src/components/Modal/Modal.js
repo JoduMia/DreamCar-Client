@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 const Modal = ({ booking, setBooking }) => {
     const { user } = useContext(AuthContext);
     const { image,product_name, resale_price,_id } = booking;
-    console.log(booking);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -26,7 +26,6 @@ const Modal = ({ booking, setBooking }) => {
             .then(data => {
                 if (data.acknowledged) {
                     toast.success("Boooking successfully");
-                    // refetch();
                 } else {
                     toast.error(data.message)
                 }

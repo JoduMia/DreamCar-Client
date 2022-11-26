@@ -11,7 +11,6 @@ const ProductsCategory = () => {
     const [booking, setBooking] = useState('null')
     const {id} = useParams();
 
-
     const {data: products= []} = useQuery({
         queryKey:['products'],
         queryFn: () => fetch(`http://localhost:5000/category/${id}`)

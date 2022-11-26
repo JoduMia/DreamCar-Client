@@ -10,7 +10,6 @@ const AddProduct = () => {
   const {user} = useContext(AuthContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const hostKey = process.env.REACT_APP_IMGBB_KEY;
-  console.log(dateFormat("dddd, mmmm dS, yyyy"));
 
   const {data: category=[]} = useQuery({
     queryKey: ['category'],
@@ -70,7 +69,6 @@ const AddProduct = () => {
       <div className='py-10 mx-auto md:w-[400px] shadow-lg px-6'>
         <h3 className='text-4xl font-bold text-[#19d3ae] text-center mb-8 uppercase'>Add Product</h3>
         <form onSubmit={handleSubmit(handleAddProduct)} className='space-y-3'>
-
 
           <div>
             <label htmlFor="name" className='text-white font-medium  pl-2'>Your Name</label>
@@ -140,8 +138,6 @@ const AddProduct = () => {
             <button type='submit' className="btn btn-primary bg-gradient-to-r from-[#19D3AE] to-[#0FCFEC] hover:bg-gradient-to-l duration-300 block w-full mx-auto">Add Product</button>
           </div>
         </form>
-
-
       </div>
     </div>
   )
