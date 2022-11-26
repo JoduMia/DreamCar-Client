@@ -1,5 +1,4 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
-import Category from "../components/Category/Category";
 import ProductsCategory from "../components/Category/ProductsCategory";
 import AllBuyers from "../layouts/Dashboard/Admin/AllBuyers";
 import AllUsers from "../layouts/Dashboard/Admin/AllUsers";
