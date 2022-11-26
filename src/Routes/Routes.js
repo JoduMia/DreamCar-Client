@@ -11,6 +11,7 @@ import MyBuyers from "../layouts/Dashboard/Seller/MyBuyers";
 import MyProduct from "../layouts/Dashboard/Seller/MyProduct";
 import Seller from "../layouts/Dashboard/Seller/Seller";
 import Main from "../layouts/Main/Main/Main";
+import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Checkout from "../payment/Checkout";
@@ -22,7 +23,7 @@ import SellerRoute from "./SellerRoutes";
 export const routes = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={ <Main /> }>
-            <Route index element={ <Category /> }/>
+            <Route index element={ <Home /> }/>
             <Route path="/login" element={ <Login /> }/>
             <Route path="/register" element={ <Register /> }/>
             <Route
