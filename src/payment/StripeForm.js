@@ -2,9 +2,11 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const StripeForm = ({ order }) => {
-    const { _id, email, name, price,product_name,matchby } = order;
+    const navigate = useNavigate();
+    const { _id, email, status, name, price,product_name,matchby } = order;
     const [catchError, setCatchError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const stripe = useStripe();
@@ -79,6 +81,7 @@ const StripeForm = ({ order }) => {
             .then(data => {
                 console.log(data);
                 if(data.acknowledged){
+                    navigate('/dashboard/myorder')
                     toast.success('Payment successfully done');
                 }
             })
@@ -107,7 +110,7 @@ const StripeForm = ({ order }) => {
                         },
                     }}
                 />
-                <button className='btn btn-success w-full block mt-5 te ' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='btn btn-success w-full block mt-5 te ' type="submit" disabled={!stripe || !clientSecret || (status === 'paid')}>
                     Pay
                 </button>
             </form>
