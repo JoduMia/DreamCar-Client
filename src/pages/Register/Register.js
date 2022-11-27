@@ -22,12 +22,12 @@ const Register = () => {
 
 
   const handleLogin = (data) => {
-    const {name,email, password} = data;
+    const {name,email, password,role} = data;
     emailPassUserCreate(email,password)
     .then(result => {
         updateUser({displayName: name})
         .then(() => {
-          saveUser(name, email)
+          saveUser(name, email,role)
 
         })
     })
@@ -35,8 +35,8 @@ const Register = () => {
 
   //saveuser fucntion
 
-  const saveUser = (name,email) => {
-    const user = {name,email};
+  const saveUser = (name,email,role) => {
+    const user = {name,email,role};
     fetch(`http://localhost:5000/users`, {
       method: 'POST',
       headers: {
@@ -80,6 +80,15 @@ const Register = () => {
             <input type="password" className="input input-bordered input-accent w-full bg-white"
               {...register('password', { required: true })}
             />
+            {errors.password && <span className='text-red-600'>Please Enter Your Password</span>}
+          </div>
+
+          <div>
+            <label htmlFor="role" className='text-white font-medium  pl-2'>Choose to Be Buyer or Seller.</label>
+            <select className="select select-bordered w-full"{...register('role',{required: true})}>
+              <option>seller</option>
+              <option>buyer</option>
+            </select>
             {errors.password && <span className='text-red-600'>Please Enter Your Password</span>}
           </div>
 

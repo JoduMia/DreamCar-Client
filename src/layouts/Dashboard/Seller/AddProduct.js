@@ -5,9 +5,11 @@ import { useForm } from 'react-hook-form';
 import dateFormat from 'dateformat';
 import { AuthContext } from '../../../contexts/AuthContext/AuthProvider';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
   const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const hostKey = process.env.REACT_APP_IMGBB_KEY;
 
@@ -43,6 +45,8 @@ const AddProduct = () => {
             image: gotData.data.url,
             location,
             category,
+            sell_status: 'available',
+            ad:false,
             post_time: dateFormat("dddd, mmmm dS, yyyy")
           };
 
@@ -56,6 +60,7 @@ const AddProduct = () => {
           .then(res => res.json())
           .then(data => {
             if(data.acknowledged){
+              navigate('/dashboard/myproduct')
               toast.success('Product Added Successfully');
             }
           })
