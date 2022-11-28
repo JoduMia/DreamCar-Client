@@ -1,17 +1,29 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { useContext } from 'react'
+import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import Loader from '../../../components/shared/Loader'
 import { AuthContext } from '../../../contexts/AuthContext/AuthProvider'
 
 const MyOrders = () => {
-  const { user } = useContext(AuthContext);
+  const { user,logOut } = useContext(AuthContext);
 
   const { data: orders, isLoading, isError } = useQuery({
     queryKey: ['orders'],
-    queryFn: () => fetch(`http://localhost:5000/mybookings?email=${user?.email}`)
-      .then(res => res.json())
+    queryFn: () => fetch(`http://localhost:5000/mybookings?email=${user?.email}`, {
+      headers: {
+        authorization: `bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then(res => {
+        if(res.status === 401 || res.status === 403){
+          logOut()
+          .then(toast.error('Got logout due to unauthorize aceess'));
+          return;
+        }
+        return res.json();
+      })
   })
 
   if (isLoading) return <Loader />
