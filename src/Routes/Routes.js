@@ -1,15 +1,16 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import ProductsCategory from "../components/Category/ProductsCategory";
 import AllBuyers from "../layouts/Dashboard/Admin/AllBuyers";
-import AllUsers from "../layouts/Dashboard/Admin/AllUsers";
 import Report from "../layouts/Dashboard/Admin/Report";
 import MyOrders from "../layouts/Dashboard/Buyer/MyOrders";
 import Dashboard from "../layouts/Dashboard/Dashboard";
+import DashIndex from "../layouts/Dashboard/DashboardIndex.js/DashIndex";
 import AddProduct from "../layouts/Dashboard/Seller/AddProduct";
 import MyBuyers from "../layouts/Dashboard/Seller/MyBuyers";
 import MyProduct from "../layouts/Dashboard/Seller/MyProduct";
 import Seller from "../layouts/Dashboard/Seller/Seller";
 import Main from "../layouts/Main/Main/Main";
+import Blogs from "../pages/Blogs/Blogs";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
@@ -27,6 +28,7 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route index element={ <Home /> }/>
             <Route path="/login" element={ <Login /> }/>
             <Route path="/register" element={ <Register /> }/>
+            <Route path="/blogs" element={ <Blogs /> }/>
             <Route
                 path="/category/:id"
                 element= { <PrivateRoute><ProductsCategory /></PrivateRoute>}
@@ -44,7 +46,7 @@ export const routes = createBrowserRouter(createRoutesFromElements(
 
 
 
-            <Route index element={<AllUsers /> }/>
+            <Route index element={<DashIndex /> }/>
             <Route path="/dashboard/sellers" element={<AdminRoute><Seller /></AdminRoute> }/>
             <Route path="/dashboard/buyers" element={<AdminRoute><AllBuyers /></AdminRoute> }/>
             <Route path="/dashboard/myorder" element={<BuyerRoutes><MyOrders /></BuyerRoutes> }/>

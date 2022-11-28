@@ -10,9 +10,7 @@ const Navbar = () => {
 
   const menu = <>
   <li><Link to='/'>Home</Link></li>
-  <li><Link to='/about'>About</Link></li>
-  <li><Link to='/appointment'>Apponinment</Link></li>
-  <li><Link to='/contact'>Contact Us</Link></li>
+  <li><Link to='/blogs'>Blogs</Link></li>
   {user?.uid && <li><Link to='/dashboard'>Dashboard</Link></li>}
 </>
 
@@ -54,7 +52,6 @@ const Navbar = () => {
                 <li>
                   <Link className="justify-between">
                     Profile
-                    <span className="badge">New</span>
                   </Link>
                 </li>
                 <li><Link>Settings</Link></li>

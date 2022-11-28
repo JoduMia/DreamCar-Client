@@ -117,7 +117,7 @@ const AddProduct = () => {
 
           <div>
             <label htmlFor="category" className='text-white font-medium  pl-2'>Select Category Price</label>
-            <select className="select select-bordered w-full"{...register('category',{required: true})}>
+            <select defaultValue={'Bus'} className="select select-bordered w-full"{...register('category',{required: true})}>
               {category.map(({category, _id}) => <option key={_id}>{category}</option>)}
             </select>
             {errors.category && <span className='text-red-600'>Category must add </span>}

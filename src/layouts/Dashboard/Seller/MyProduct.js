@@ -7,12 +7,23 @@ import Loader from '../../../components/shared/Loader'
 import { AuthContext } from '../../../contexts/AuthContext/AuthProvider'
 
 const MyProduct = () => {
-  const { user } = useContext(AuthContext);
+  const { user,logOut } = useContext(AuthContext);
 
   const { data: myproducts, isLoading, isError, refetch } = useQuery({
     queryKey: ['orders'],
-    queryFn: () => fetch(`http://localhost:5000/myproducts?email=${user?.email}`)
-      .then(res => res.json())
+    queryFn: () => fetch(`http://localhost:5000/myproducts?email=${user?.email}`, {
+      headers: {
+        authorization: `bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then(res => {
+        if (res.status === 401 || res.status === 403) {
+          logOut()
+            .then(toast.error('Got logout due to unauthorize aceess'));
+          return;
+        }
+        return res.json();
+      })
   })
 
 
@@ -57,7 +68,7 @@ const MyProduct = () => {
   )
 
 
-  if(myproducts.length) return (
+  if (myproducts.length) return (
     <div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
@@ -123,8 +134,8 @@ const MyProduct = () => {
   return (
     <div className='flex items-center justify-center h-[300px]'>
       <div className='space-y-3'>
-      <h3 className='text-3xl font-semibold text-green-600'>You have no products to display</h3>
-      <p>Want to add a product to sell? <Link className='btn btn-sm btn-success' to={'/dashboard/addproduct'}>Add product</Link></p>
+        <h3 className='text-3xl font-semibold text-green-600'>You have no products to display</h3>
+        <p>Want to add a product to sell? <Link className='btn btn-sm btn-success' to={'/dashboard/addproduct'}>Add product</Link></p>
       </div>
     </div>
   )

@@ -95,7 +95,7 @@ const Register = () => {
 
           <div>
             <label htmlFor="role" className='text-white font-medium  pl-2'>Choose to Be Buyer or Seller.</label>
-            <select className="select select-bordered w-full"{...register('role',{required: true})}>
+            <select defaultValue={'buyer'} className="select select-bordered w-full"{...register('role',{required: true})}>
               <option>seller</option>
               <option>buyer</option>
             </select>

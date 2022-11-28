@@ -3,7 +3,7 @@ import React from 'react'
 import Loader from '../../../components/shared/Loader';
 
 const AllUsers = () => {
-    const {data: users, isLoading, isError} = useQuery({
+    const {data: users, isLoading, } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users`);
