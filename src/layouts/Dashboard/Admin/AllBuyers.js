@@ -7,7 +7,7 @@ const AllBuyers = () => {
 
   const { data: buyers, isLoading, isError, refetch } = useQuery({
     queryKey: ['buyers'],
-    queryFn: () => fetch(`http://localhost:5000/buyers`)
+    queryFn: () => fetch(`https://server-tawny-theta.vercel.app/buyers`)
       .then(res => res.json())
   })
 
@@ -15,7 +15,7 @@ const AllBuyers = () => {
   const deleteBuyer = (id, name, refetch) => {
     const agree = window.confirm(`Are you sure to delete "${name}"`);
     if (agree) {
-      fetch(`http://localhost:5000/deleteseller/${id}`, {
+      fetch(`https://server-tawny-theta.vercel.app/deleteseller/${id}`, {
         method: 'DELETE'
       })
         .then(res => res.json())

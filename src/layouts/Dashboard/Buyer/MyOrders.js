@@ -11,7 +11,7 @@ const MyOrders = () => {
 
   const { data: orders, isLoading, isError } = useQuery({
     queryKey: ['orders'],
-    queryFn: () => fetch(`http://localhost:5000/mybookings?email=${user?.email}`, {
+    queryFn: () => fetch(`https://server-tawny-theta.vercel.app/mybookings?email=${user?.email}`, {
       headers: {
         authorization: `bearer ${localStorage.getItem('token')}`
       }

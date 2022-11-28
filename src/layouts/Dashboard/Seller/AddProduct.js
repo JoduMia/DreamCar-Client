@@ -15,7 +15,7 @@ const AddProduct = () => {
 
   const {data: category=[]} = useQuery({
     queryKey: ['category'],
-    queryFn: () => fetch(`http://localhost:5000/onlycategory`)
+    queryFn: () => fetch(`https://server-tawny-theta.vercel.app/onlycategory`)
     .then(res => res.json())
   })
 
@@ -50,7 +50,7 @@ const AddProduct = () => {
             post_time: dateFormat("dddd, mmmm dS, yyyy")
           };
 
-          fetch('http://localhost:5000/addproduct', {
+          fetch('https://server-tawny-theta.vercel.app/addproduct', {
             method:'POST',
             headers: {
               'content-type': 'application/json'

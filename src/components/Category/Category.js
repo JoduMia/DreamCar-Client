@@ -7,7 +7,7 @@ const Category = () => {
 
     const { data: categories, isLoading, isError, error } = useQuery({
         queryKey: ['category'],
-        queryFn: () => fetch(`http://localhost:5000/category`)
+        queryFn: () => fetch(`https://server-tawny-theta.vercel.app/category`)
             .then(res => res.json())
     })
     if (isLoading) {

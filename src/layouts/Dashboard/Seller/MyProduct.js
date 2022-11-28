@@ -11,7 +11,7 @@ const MyProduct = () => {
 
   const { data: myproducts, isLoading, isError, refetch } = useQuery({
     queryKey: ['orders'],
-    queryFn: () => fetch(`http://localhost:5000/myproducts?email=${user?.email}`, {
+    queryFn: () => fetch(`https://server-tawny-theta.vercel.app/myproducts?email=${user?.email}`, {
       headers: {
         authorization: `bearer ${localStorage.getItem('token')}`
       }
@@ -29,7 +29,7 @@ const MyProduct = () => {
 
   //addto advertise function
   const addToAdvertise = (id, refectch) => {
-    fetch(`http://localhost:5000/addtoads/${id}`, {
+    fetch(`https://server-tawny-theta.vercel.app/addtoads/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'
@@ -47,7 +47,7 @@ const MyProduct = () => {
   const handleDelete = (id, name, refetch) => {
     const agree = window.confirm(`Are you sure to delete ${name}`);
     if (agree) {
-      fetch(`http://localhost:5000/deleteproduct/${id}`, {
+      fetch(`https://server-tawny-theta.vercel.app/deleteproduct/${id}`, {
         method: 'DELETE'
       })
         .then(res => res.json())

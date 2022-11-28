@@ -15,7 +15,7 @@ const StripeForm = ({ order }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://server-tawny-theta.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -70,7 +70,7 @@ const StripeForm = ({ order }) => {
         if(paymentIntent.status === 'succeeded'){
             const paymentInfo = {id: _id,matchby,name,email,product_name,price, tnxId: paymentIntent.id};
             setCatchError('');
-            fetch(`http://localhost:5000/payment`,{
+            fetch(`https://server-tawny-theta.vercel.app/payment`,{
                 method:'POST',
                 headers: {
                     'content-type': 'application/json'

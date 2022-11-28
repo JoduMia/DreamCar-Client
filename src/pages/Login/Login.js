@@ -46,7 +46,7 @@ const Login = () => {
   const saveUser = (name,email,role) => {
     console.log('dukce');
     const user = {name,email,role};
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://server-tawny-theta.vercel.app/users`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

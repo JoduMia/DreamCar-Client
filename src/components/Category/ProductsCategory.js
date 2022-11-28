@@ -19,13 +19,13 @@ const ProductsCategory = () => {
 
     const { data: products, isLoading, isError,refetch } = useQuery({
         queryKey: ['products'],
-        queryFn: () => fetch(`http://localhost:5000/category/${id}?email=${user?.email}`)
+        queryFn: () => fetch(`https://server-tawny-theta.vercel.app/category/${id}?email=${user?.email}`)
             .then(res => res.json())
     });
 
     const addToWishlist = (product) => {
         console.log(product);
-        fetch(`http://localhost:5000/wishlist?email=${user?.email}`,{
+        fetch(`https://server-tawny-theta.vercel.app/wishlist?email=${user?.email}`,{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

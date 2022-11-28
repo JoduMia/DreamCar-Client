@@ -7,13 +7,13 @@ const Seller = () => {
 
   const { data: sellers, isLoading, isError, refetch } = useQuery({
     queryKey: ['sellers'],
-    queryFn: () => fetch(`http://localhost:5000/sellers`)
+    queryFn: () => fetch(`https://server-tawny-theta.vercel.app/sellers`)
       .then(res => res.json())
   })
 
 
   const verifyUser = (id,email, refectch) => {
-    fetch(`http://localhost:5000/verifyuser/${id}?email=${email}`, {
+    fetch(`https://server-tawny-theta.vercel.app/verifyuser/${id}?email=${email}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'
@@ -34,7 +34,7 @@ const Seller = () => {
   const deleteUser = (id, name, refetch) => {
     const agree = window.confirm(`Are you sure to delete "${name}"`);
     if (agree) {
-      fetch(`http://localhost:5000/deleteseller/${id}`, {
+      fetch(`https://server-tawny-theta.vercel.app/deleteseller/${id}`, {
         method: 'DELETE'
       })
         .then(res => res.json())

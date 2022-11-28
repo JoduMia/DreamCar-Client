@@ -9,7 +9,7 @@ const MyBuyers = () => {
 
   const { data: buyers, isLoading, isError } = useQuery({
     queryKey: ['buyers'],
-    queryFn: () => fetch(`http://localhost:5000/mybuyers/${user?.email}`)
+    queryFn: () => fetch(`https://server-tawny-theta.vercel.app/mybuyers/${user?.email}`)
       .then(res => res.json())
   })
 

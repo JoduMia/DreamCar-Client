@@ -16,7 +16,7 @@ const Modal = ({ booking, setBooking }) => {
         const where = form.location.value;
 
         const doc = {name, image, email, phone, product_name, price:resale_price, where, matchby: _id, seller_email}
-        fetch(`http://localhost:5000/bookings`, {
+        fetch(`https://server-tawny-theta.vercel.app/bookings`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

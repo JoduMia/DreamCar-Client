@@ -13,7 +13,7 @@ const Advertise = () => {
   const [booking, setBooking] = useState('');
   const { data: advertises, isLoading, isError } = useQuery({
     queryKey: ['advertises'],
-    queryFn: () => fetch(`http://localhost:5000/advetise`)
+    queryFn: () => fetch(`https://server-tawny-theta.vercel.app/advetise`)
       .then(res => res.json()),
     onError: () => {}
   })

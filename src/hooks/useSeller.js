@@ -6,7 +6,7 @@ const useSellerChecker = email => {
     const [sellerLoading, setSellerLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/seller/${email}`)
+            fetch(`https://server-tawny-theta.vercel.app/users/seller/${email}`)
             .then(res => res.json())
             .then(data => {
                 setIsSeller(data.isSeller)

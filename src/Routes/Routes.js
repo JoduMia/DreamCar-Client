@@ -39,7 +39,7 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route
             path="/dashboard/checkout/:id"
             element={<BuyerRoutes><Checkout /></BuyerRoutes> }
-            loader={({params}) => fetch(`http://localhost:5000/dashboard/checkout/${params.id}`)}
+            loader={({params}) => fetch(`https://server-tawny-theta.vercel.app/dashboard/checkout/${params.id}`)}
             />
 
 
