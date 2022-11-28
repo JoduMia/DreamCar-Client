@@ -9,13 +9,12 @@ import useToken from '../../hooks/useToken';
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { setLoading, emailPassSignIn} = useContext(AuthContext);
+  const { setLoading, emailPassSignIn,signInGoogle} = useContext(AuthContext);
   const [signInEmail, setSignInEmail] = useState('');
   const [token] = useToken(signInEmail);
 
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
   const from = location?.state?.from?.pathname || '/';
 
   if(token) {
@@ -32,6 +31,33 @@ const Login = () => {
       setLoading(false);
     }).catch(()=> {})
     .finally(() => setLoading(false))
+  };
+
+  const googleLogin = () => {
+    signInGoogle()
+    .then(result => {
+      console.log('yes');
+      const {displayName, email} = result.user;
+      const role = 'buyer';
+      saveUser(displayName,email,role)
+    })
+  }
+
+  const saveUser = (name,email,role) => {
+    console.log('dukce');
+    const user = {name,email,role};
+    fetch(`http://localhost:5000/users`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      setSignInEmail(email);
+    })
   };
 
   return (
@@ -64,7 +90,7 @@ const Login = () => {
         <div className="divider before:bg-opacity-100 before:bg-white after:bg-white after:bg-opacity-100 text-white">OR</div>
 
         <div className='text-center'>
-          <button className="btn btn-outline btn-success  duration-300 block w-full mx-auto uppercase">Continue with google</button>
+          <button onClick={googleLogin} className="btn btn-outline btn-success  duration-300 block w-full mx-auto uppercase">Continue with google</button>
         </div>
 
       </div>

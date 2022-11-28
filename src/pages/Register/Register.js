@@ -9,7 +9,7 @@ import useToken from '../../hooks/useToken';
 
 const Register = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const {emailPassUserCreate, updateUser} = useContext(AuthContext);
+  const {emailPassUserCreate, updateUser, signInGoogle} = useContext(AuthContext);
   const [verifiedEmail, setVerifiedEmail] = useState('');
   const [token] = useToken(verifiedEmail);
   const navigate = useNavigate();
@@ -32,6 +32,16 @@ const Register = () => {
         })
     })
   };
+
+  const googleLogin = () => {
+    signInGoogle()
+    .then(result => {
+      console.log('yes');
+      const {displayName, email} = result.user;
+      const role = 'buyer';
+      saveUser(displayName,email,role)
+    })
+  }
 
   //saveuser fucntion
 
@@ -100,7 +110,7 @@ const Register = () => {
         <div className="divider before:bg-opacity-100 before:bg-white after:bg-white after:bg-opacity-100 text-white">OR</div>
 
         <div className='text-center'>
-          <button className="btn btn-outline btn-success  duration-300 block w-full mx-auto uppercase">Continue with google</button>
+          <button onClick={googleLogin} className="btn btn-outline btn-success  duration-300 block w-full mx-auto uppercase">Continue with google</button>
         </div>
 
       </div>

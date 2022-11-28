@@ -23,7 +23,7 @@ const AuthProvider = ({children}) => {
 
   const signInGoogle = () => {
     setLoading(true);
-    signInWithPopup(auth, googleProvider)
+    return signInWithPopup(auth, googleProvider)
   };
 
   const updateUser = (userInfo) => {
@@ -37,7 +37,6 @@ const AuthProvider = ({children}) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
       setUser(currentUser);
       setLoading(false);
     });

@@ -12,6 +12,7 @@ import Seller from "../layouts/Dashboard/Seller/Seller";
 import Main from "../layouts/Main/Main/Main";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import NotFound from "../pages/NotFound/NotFound";
 import Register from "../pages/Register/Register";
 import Wishlist from "../pages/Wishlist/Wishlist";
 import Checkout from "../payment/Checkout";
@@ -54,5 +55,6 @@ export const routes = createBrowserRouter(createRoutesFromElements(
 
             <Route path="/dashboard/reports" element={<AdminRoute><Report /></AdminRoute> }/>
         </Route>
+        <Route path="*" element={<NotFound />}/>
     </Route>
 ))
