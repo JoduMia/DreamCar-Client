@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import toast from 'react-hot-toast'
-import { Link } from 'react-router-dom'
 import Loader from '../../../components/shared/Loader'
 
 const Seller = () => {
@@ -105,15 +104,6 @@ const Seller = () => {
 
           </tbody>
         </table>
-      </div>
-    </div>
-  )
-
-  return (
-    <div className='flex items-center justify-center h-[300px]'>
-      <div className='space-y-3'>
-      <h3 className='text-3xl font-semibold text-green-600'>You have no products to display</h3>
-      <p>Want to add a product to sell? <Link className='btn btn-sm btn-success' to={'/dashboard/addproduct'}>Add product</Link></p>
       </div>
     </div>
   )
