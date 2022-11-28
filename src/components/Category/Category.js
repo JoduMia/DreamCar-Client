@@ -9,7 +9,7 @@ const Category = () => {
     const { data: categories, isLoading, isError, error } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/category`);
+            const res = await axios.get(`https://server-tawny-theta.vercel.app/category`);
             return res.data;
         }
 
