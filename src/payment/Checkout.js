@@ -4,7 +4,7 @@ import React from 'react'
 import { useLoaderData } from 'react-router-dom';
 import StripeForm from './StripeForm'
 
-const stripePromise = loadStripe('pk_test_51M83t1IVPtt27fTQ9lg8TlV1U0lnOtxYKcO9XaPo2Enkv3TN2xvLAt0ireoQVSjJzG5kbXYf2l07yiUfzxigAjoF00BVAL0tK4');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK_KEY);
 
 const Checkout = () => {
     const order = useLoaderData();
