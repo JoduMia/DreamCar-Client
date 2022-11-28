@@ -12,7 +12,7 @@ const Seller = () => {
   })
 
 
-  const verifyUser = (id,email, refectch) => {
+  const verifyUser = (id,email, refetch) => {
     fetch(`https://server-tawny-theta.vercel.app/verifyuser/${id}?email=${email}`, {
       method: 'PUT',
       headers: {
@@ -23,7 +23,7 @@ const Seller = () => {
       .then(data => {
         if (data.acknowledged) {
           toast.success('Successfully verified the user');
-          refectch();
+          refetch();
         }
       })
   };
