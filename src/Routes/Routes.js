@@ -1,5 +1,6 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import ProductsCategory from "../components/Category/ProductsCategory";
+import Error from "../components/shared/Error";
 import AllBuyers from "../layouts/Dashboard/Admin/AllBuyers";
 import Report from "../layouts/Dashboard/Admin/Report";
 import MyOrders from "../layouts/Dashboard/Buyer/MyOrders";
@@ -23,7 +24,7 @@ import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoutes";
 
 export const routes = createBrowserRouter(createRoutesFromElements(
-    <Route>
+    <Route >
         <Route path="/" element={ <Main /> }>
             <Route index element={ <Home /> }/>
             <Route path="/login" element={ <Login /> }/>
@@ -35,7 +36,10 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             />
         </Route>
 
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+        <Route path="/dashboard"
+        element={<PrivateRoute><Dashboard /></PrivateRoute>}
+        errorElement={<Error />}
+        >
             <Route
             path="/dashboard/checkout/:id"
             element={<BuyerRoutes><Checkout /></BuyerRoutes> }

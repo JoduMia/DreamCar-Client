@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Loader from '../shared/Loader'
@@ -7,9 +8,15 @@ const Category = () => {
 
     const { data: categories, isLoading, isError, error } = useQuery({
         queryKey: ['category'],
-        queryFn: () => fetch(`https://server-tawny-theta.vercel.app/category`)
-            .then(res => res.json())
+        queryFn: async () => {
+            const res = await axios.get(`http://localhost:5000/category`);
+            return res.data;
+        }
+
+
+
     })
+    console.log(categories);
     if (isLoading) {
         return <Loader />
     }

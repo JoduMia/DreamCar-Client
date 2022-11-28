@@ -1,6 +1,9 @@
 # Project-Name: DreamCar | The Resaler
 
-Project Live site Link: [Create React App](https://github.com/facebook/create-react-app).
+# adminEmail: <sheikhsuzan71@gamil.com>
+# adminPassword: <223344>
+
+Project Live site Link: [DreamCar | Dream comes True](https://dream-car-6513b.web.app/).
 
 This project has used React in front end development. And express for the backend.The project idea is based on a old car resaling website. There used many feature likes a professional e-commerce website.
 
@@ -21,7 +24,3 @@ The tools or packages to make the site interactive....
 * Hero slider.
 * Mongodb as a database.
 * Firebase for hosting and authentication.
-
-
-
-
