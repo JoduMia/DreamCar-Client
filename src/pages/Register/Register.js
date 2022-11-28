@@ -36,7 +36,6 @@ const Register = () => {
   const googleLogin = () => {
     signInGoogle()
     .then(result => {
-      console.log('yes');
       const {displayName, email} = result.user;
       const role = 'buyer';
       saveUser(displayName,email,role)

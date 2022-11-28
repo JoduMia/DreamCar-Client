@@ -24,7 +24,6 @@ const StripeForm = ({ order }) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setClientSecret(data.clientSecret)
             });
     }, [order]);
@@ -46,9 +45,8 @@ const StripeForm = ({ order }) => {
         if (error) {
             setCatchError(error.message);
         } else {
-            console.log('[PaymentMethod]', paymentMethod);
         }
-
+        console.log(paymentMethod);
 
 
         const { paymentIntent, error: confirmEroor } = await stripe.confirmCardPayment(
@@ -79,7 +77,6 @@ const StripeForm = ({ order }) => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if(data.acknowledged){
                     navigate('/dashboard/myorder')
                     toast.success('Payment successfully done');

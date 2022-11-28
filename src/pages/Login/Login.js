@@ -26,7 +26,6 @@ const Login = () => {
     const {email,password} = data;
     emailPassSignIn(email, password)
     .then(() => {
-      console.log('mail done');
       setSignInEmail(email);
       setLoading(false);
     }).catch(()=> {})
@@ -36,7 +35,6 @@ const Login = () => {
   const googleLogin = () => {
     signInGoogle()
     .then(result => {
-      console.log('yes');
       const {displayName, email} = result.user;
       const role = 'buyer';
       saveUser(displayName,email,role)
@@ -44,7 +42,6 @@ const Login = () => {
   }
 
   const saveUser = (name,email,role) => {
-    console.log('dukce');
     const user = {name,email,role};
     fetch(`https://server-tawny-theta.vercel.app/users`, {
       method: 'POST',
@@ -55,7 +52,6 @@ const Login = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       setSignInEmail(email);
     })
   };

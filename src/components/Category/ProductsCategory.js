@@ -24,7 +24,6 @@ const ProductsCategory = () => {
     });
 
     const addToWishlist = (product) => {
-        console.log(product);
         fetch(`https://server-tawny-theta.vercel.app/wishlist?email=${user?.email}`,{
             method: 'POST',
             headers: {

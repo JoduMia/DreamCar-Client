@@ -51,7 +51,6 @@ const MyOrders = () => {
 
             {
               orders.map(order => {
-                console.log(order);
                 const { _id,image, price, product_name, status } = order;
                 return (
                   <tr key={_id}>
