@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthProvider';
 import toast from 'react-hot-toast';
+import Loader from '../shared/Loader';
 
 const ProductsCategory = () => {
     const {user} = useContext(AuthContext);
@@ -16,7 +17,7 @@ const ProductsCategory = () => {
     const [booking, setBooking] = useState('null')
     const { id } = useParams();
 
-    const { data: products = [],refetch } = useQuery({
+    const { data: products, isLoading, isError,refetch } = useQuery({
         queryKey: ['products'],
         queryFn: () => fetch(`http://localhost:5000/category/${id}?email=${user?.email}`)
             .then(res => res.json())
@@ -42,7 +43,14 @@ const ProductsCategory = () => {
         })
     };
 
-    return (
+    if (isLoading) return <Loader />
+  if (isError) return (
+    <div className='flex items-center justify-center h-[80vh]'>
+      <h1 className='text-3xl font-semibold text-red-600'>Something Wrong happended</h1>
+    </div>
+  )
+
+    if(products.length) return (
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
             {
                 products.map(product => {
@@ -83,6 +91,12 @@ const ProductsCategory = () => {
             }
         </div>
     )
+
+    return (
+        <div className='flex items-center justify-center h-[300px]'>
+          <h3 className='text-3xl font-semibold text-green-600'>You have no products to display</h3>
+        </div>
+      )
 }
 
 export default ProductsCategory
