@@ -13,6 +13,7 @@ import Main from "../layouts/Main/Main/Main";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Wishlist from "../pages/Wishlist/Wishlist";
 import Checkout from "../payment/Checkout";
 import AdminRoute from "./AdminRoute";
 import BuyerRoutes from "./BuyerRoutes";
@@ -49,6 +50,7 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route path="/dashboard/addproduct" element={<SellerRoute><AddProduct /></SellerRoute> }/>
             <Route path="/dashboard/myproduct" element={<MyProduct /> }/>
             <Route path="/dashboard/mybuyers" element={<SellerRoute><MyBuyers /></SellerRoute> }/>
+            <Route path="/dashboard/wishlist" element={<Wishlist />} />
 
             <Route path="/dashboard/reports" element={<AdminRoute><Report /></AdminRoute> }/>
         </Route>
