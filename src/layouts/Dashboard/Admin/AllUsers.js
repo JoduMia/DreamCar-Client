@@ -11,6 +11,7 @@ const AllUsers = () => {
             return data;
         }
     })
+    console.log(users);
 
     if(isLoading) return <Loader />
   return (
