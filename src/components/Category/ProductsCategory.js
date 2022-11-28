@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { TiTick } from 'react-icons/ti'
 import { ImLocation } from 'react-icons/im'
 import { BiTime } from 'react-icons/bi'
@@ -12,6 +12,7 @@ import toast from 'react-hot-toast';
 
 const ProductsCategory = () => {
     const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
     const [booking, setBooking] = useState('null')
     const { id } = useParams();
 
@@ -36,6 +37,7 @@ const ProductsCategory = () => {
                 toast.error('Already added to the wishlist');
             } else {
                 toast.success('Successfully added to the wishlist');
+                navigate('/dashboard/wishlist');
             }
         })
     };

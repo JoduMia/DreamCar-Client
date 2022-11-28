@@ -34,6 +34,8 @@ const Dashboard = () => {
 
             {(isSeller || isAdmin) && <li><Link to='/dashboard/addproduct'>Add Product</Link></li>}
 
+            {(isBuyer || isAdmin) && <li><Link to='/dashboard/wishlist'>Wishlists</Link></li>}
+
           </ul>
 
         </div>

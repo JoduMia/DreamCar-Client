@@ -50,7 +50,7 @@ export const routes = createBrowserRouter(createRoutesFromElements(
             <Route path="/dashboard/addproduct" element={<SellerRoute><AddProduct /></SellerRoute> }/>
             <Route path="/dashboard/myproduct" element={<MyProduct /> }/>
             <Route path="/dashboard/mybuyers" element={<SellerRoute><MyBuyers /></SellerRoute> }/>
-            <Route path="/dashboard/wishlist" element={<Wishlist />} />
+            <Route path="/dashboard/wishlist" element={<BuyerRoutes><Wishlist /></BuyerRoutes>} />
 
             <Route path="/dashboard/reports" element={<AdminRoute><Report /></AdminRoute> }/>
         </Route>
